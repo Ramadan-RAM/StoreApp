@@ -1,0 +1,68 @@
+﻿@model StoreApp.Models.Item
+
+@{
+    ViewBag.Title = "EditItem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/Content/EditCat.css" rel="stylesheet" />
+
+<h2 id="title">Edit Item</h2>
+
+@*Edit Category form*@
+<div id="Cont">
+    <div id="frm">
+        @using (Html.BeginForm("EditItem", "Home", FormMethod.Post))
+        {
+            StoreApp.Models.Store_DBEntities dbSelect = new StoreApp.Models.Store_DBEntities();
+            List<SelectListItem> li = new List<SelectListItem>();
+
+            foreach (var item in dbSelect.Categories)
+            {
+                li.Add(new SelectListItem { Text = item.Cat_Name, Value = item.ID.ToString() });
+
+            }
+
+            <div class="lbl">@Html.Label("Category:")</div>
+            <div id="UserName">
+                @Html.DropDownList("Categories", li, new { id = "txt" })
+            </div>
+
+            <div class="lbl2">@Html.Label("Item name:")</div>
+            <div id="UserName">
+                @Html.TextBox("Itemname", @Model.Item_name, new { id = "txt" })
+            </div>
+
+            <div class="lbl2">@Html.Label("Item img:")</div>
+            <div id="UserName">
+                @Html.TextBox("Itemimg", @Model.Item_img, new { id = "txt" })
+            </div>
+
+            <div class="lbl2">@Html.Label("Price:")</div>
+            <div id="UserName">
+                @Html.TextBox("ItemPrice", @Model.Item_price, new { id = "txt" })
+            </div>
+
+            <div class="lbl2">@Html.Label("Quantity:")</div>
+            <div id="UserName">
+                @Html.TextBox("ItemQuantity", @Model.Item_quantity, new { id = "txt" })
+            </div>
+
+            <div class="lbl2">@Html.Label("Details:")</div>
+            <div id="UserName">
+                @Html.TextBox("ItemDetails", @Model.Item_details, new { id = "txt" })
+            </div>
+
+            <div id="Button"><button id="btn" type="submit">Save</button></div>
+
+            <hr />
+            <h3>
+                @Html.ActionLink("Back to list", "Admin")
+            </h3>
+
+        }
+    </div>
+</div>
+
+

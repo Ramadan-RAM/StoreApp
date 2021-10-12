@@ -1,0 +1,89 @@
+﻿body {
+    margin: 50px;
+}
+
+#title {
+    text-align: center;
+    color: teal;
+    font-size: 50PX;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#Container {
+    border-radius: 5px;
+    width: 400px;
+    height: 400px;
+    margin-left: 33%;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px 2px #0094ff;
+}
+
+
+#Cont {
+    border-radius: 5px;
+    width: 400px;
+    height: 650px;
+    margin-left: 33%;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px 2px #0094ff;
+}
+
+#frm {
+    border-radius: 5px;
+    margin-top: 2px;
+    margin-left: 15%;
+}
+
+.lbl {
+    margin-top: 30px;
+    padding-top: 10%;
+    color: blue;
+}
+
+.lbl2 {
+    margin-top: 5px;
+    padding-top: 10%;
+    color: blue;
+}
+
+#UserName {
+    width: 200px;
+    text-align: center;
+}
+
+    #UserName #txt {
+        width: 300px;
+        text-align: center;
+    }
+
+#UserPassword {
+    width: 200px;
+    text-align: center;
+}
+
+    #UserPassword #Pwdtxt {
+        width: 300px;
+        text-align: center;
+    }
+
+#Button {
+    margin-top: 10px;
+    padding-top: 1%;
+    color: blue;
+    width: 80px;
+    height: 50px;
+    font-size: 10px;
+    /*margin-left: 33%;*/
+}
+
+#btn {
+    margin-top: 10px;
+    padding-top: 1%;
+    color: white;
+    width: 280px;
+    height: 50px;
+    background-color: black;
+    font-size: 20PX;
+    font-weight:;
+}

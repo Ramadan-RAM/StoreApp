@@ -1,0 +1,40 @@
+﻿@model System.Collections.Generic.List<StoreApp.Models.Item>
+
+<div class="blueTable">
+
+    @Html.ActionLink("Add item", "AddNewItem")
+
+    <table class="blueTable">
+
+        <tr>
+            <td>Item ID</td>
+            <td>Category ID</td>
+            <td>Item name</td>
+            <td>Item img</td>
+            <td>Item price</td>
+            <td>Item quantity</td>
+            <td>Item details</td>
+        </tr>
+        @for (int i = 0; i < @Model.Count; i++)
+        {
+            <tr>
+                <td>@Model[i].ID</td>
+                <td>@Model[i].Cat_ID</td>
+                <td>@Model[i].Item_name</td>
+                <td>@Model[i].Item_img</td>
+                <td>@Model[i].Item_price</td>
+                <td>@Model[i].Item_quantity</td>
+                <td>@Model[i].Item_details</td>
+
+                <td>
+                    @Html.ActionLink("Edit", "EditItem", new { id = @Model[i].ID })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "DeleteItem", new { id = @Model[i].ID },
+                    new { onclick = "return confirm('Are you sure to delete ?!!');" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

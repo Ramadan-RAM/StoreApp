@@ -1,0 +1,74 @@
+﻿@model StoreApp.Models.Category
+
+@{
+    ViewBag.Title = "EditCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <div class="app-main__outer">
+        <div class="app-main__inner">
+            <div class="app-page-title">
+                <div class="page-title-wrapper">
+                    <div class="page-title-heading">
+                        <div class="page-title-icon-rounded">
+                            <i class="fa-accessible-icon fa fa-table">
+                            </i>
+                        </div>
+                        <div>
+                            &nbsp;
+                            Edit Category
+                            <div class="page-title-subheading">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-header">
+                            Category
+                        </div>
+
+                        <div class="table-responsive">
+                            @using (Html.BeginForm("EditCategory", "Home", FormMethod.Post))
+                            {
+                                <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+
+                                    <thead>
+
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <label style="font-size:20px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:blue;">Category Name:</label>
+                                                
+                                                @Html.TextBox("cat_txt", @Model.Cat_Name, new { id = "txt", Class = "form-control", Placeholder = "Add Category", Arialabel = "Category", Ariadescribedby = "Category-addon", required = "true" })
+                                           <br />
+                                                <button type="submit" class="btn btn-primary">
+                                                    Save Changes
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            }
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

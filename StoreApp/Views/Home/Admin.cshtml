@@ -1,0 +1,172 @@
+﻿@model System.Collections.Generic.List<StoreApp.Models.Category>
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin</title>
+
+</head>
+<body>
+    <div class="app-main__outer">
+        <div class="app-main__inner">
+            <div class="app-page-title">
+                <div class="page-title-wrapper">
+                    <div class="page-title-heading">
+                        <div class="page-title-icon-rounded">
+                            <i class="fa-accessible-icon fa fa-user">
+                            </i>
+                        </div>
+                        <div>
+                            &nbsp;
+                            Admin Store
+                            <div class="page-title-subheading">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <div class="card-title">Admin Opriations</div>
+
+                            <div>
+                                @using (Html.BeginForm())
+                                {
+                                    <div>
+                                        <div>
+                                            @*Category*@
+                                            <div id="cat">Categories</div>
+                                            <div id="cat_Panel">
+
+                                                <div>
+                                                    <button id="opener" type="button" class="btn mr-2 mb-2 btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Add Category</button>
+
+                                                    <table class="blueTable">
+
+                                                        <tr>
+                                                            <td>Category ID</td>
+                                                            <td>Category Name</td>
+                                                            <td>Operations</td>
+                                                        </tr>
+                                                        @for (int i = 0; i < @Model.Count; i++)
+                                                        {
+                                                            <tr>
+                                                                <td>@Model[i].ID</td>
+                                                                <td>@Model[i].Cat_Name</td>
+                                                                <td>
+                                                                    @Html.ActionLink("Edit", "EditCategory", new { id = @Model[i].ID})
+                                                                
+                                                                </td>
+                                                                <td>
+                                                                    @Html.ActionLink("Delete", "DeleteCategory", new { id = @Model[i].ID },
+                                                                    new { onclick = "return confirm('Are you sure to delete ?!!');" })
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </table>
+                                                </div>
+
+                                            </div>
+
+
+                                            @*Items*@
+                                            <div id="itm">Items</div>
+                                            <div id="itm_Panel">
+
+                                                <div>
+
+                                                    @{
+                                                        StoreApp.Models.Store_DBEntities db = new StoreApp.Models.Store_DBEntities();
+                                                        var t = (from i in db.Items select i).ToList();
+
+                                                        <button id = "openeritm" type="button" class="btn mr-2 mb-2 btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Add item</button>
+
+                                                        @*@Html.ActionLink("Add item", null, null, new { id = "openeritm" })*@
+                                                        <div>
+                                                            @for (int i = 0; i < t.Count; i++)
+                                                            {
+                                                                <div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="table-wrap">
+                                                                                <table class="table table-bordered text-center">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td>ID : @t[i].ID</td>
+                                                                                            <td><img class="img rounded-circle mb-2" style="width:80px; height:80px;" src="~/Images/Items/@t[i].Item_img" /></td>
+                                                                                            <td>Category ID: @t[i].Cat_ID</td>
+                                                                                            <td>@t[i].Item_name</td>
+                                                                                            <td>Price: @t[i].Item_price</td>
+                                                                                            <td>Quantity: @t[i].Item_quantity</td>
+                                                                                            <td>Details: @t[i].Item_details</td>
+                                                                                            <td>
+                                                                                                @Html.ActionLink("Edit", "EditItem", new { id = @t[i].ID })
+
+                                                                                                @Html.ActionLink("Delete", "DeleteItem", new { id = @t[i].ID },
+                                                                                                new { onclick = "return confirm('Are you sure to delete ?!!');" })
+
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            // Add new category
+            var opener = document.getElementById("opener");
+
+
+            // Add Item
+            var openeritm = document.getElementById("openeritm");
+
+            $("#cat").click(function () {
+                                           /or*slow*/
+                $("#cat_Panel").slideToggle("20")
+                $("cat").css("background-color", "#0094ff")
+                $("cat").css("color", "white")
+            })
+
+            $("#itm").click(function () {
+                $("#itm_Panel").slideToggle("20")
+                $("itm").css("background-color", "#0094ff")
+                $("itm").css("color", "white")
+            })
+
+        });
+
+        function GetId(e) {
+            alert(e.id);
+        }
+
+
+    </script>
+</body>
+</html>

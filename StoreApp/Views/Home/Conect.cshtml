@@ -1,0 +1,83 @@
+﻿@model System.Collections.Generic.List<StoreApp.Models.Message>
+
+@{
+    ViewBag.Title = "Conect";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+</head>
+<body>
+    <div class="app-main__outer">
+        <div class="app-main__inner">
+            <div class="app-page-title">
+                <div class="page-title-wrapper">
+                    <div class="page-title-heading">
+                        <div class="page-title-icon-rounded">
+                            <i class="fa-accessible-icon fa fa-phone">
+                            </i>
+                        </div>
+                        <div>
+                            &nbsp;
+                            Conect to us
+                            <div class="page-title-subheading">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <div class="card-title">Send Message</div>
+                            <div class="main-card mb-3 card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Add your innformation here and send</h5>
+                                    @using (Html.BeginForm("Conect", "Home", FormMethod.Post, new { enctype = "multipart/form-datat" }))
+                                    {
+                                        <form class="">
+                                            <div class="position-relative form-group">
+                                                <label for="exampleEmail" class="">Name</label>
+                                                @Html.TextBox("Sname", null, new { id = "txt", Class = "form-control", Placeholder = "Name", Arialabel = "Name", Ariadescribedby = "Name-addon", required = "true" })
+                                            </div>
+
+                                            <div class="position-relative form-group">
+                                                <label for="exampleEmail" class="">Phone</label>
+                                                @Html.TextBox("Smail", null, new { id = "txt", Class = "form-control", Placeholder = "Phone", Arialabel = "Phone", Ariadescribedby = "Phone-addon", required = "true" })
+                                            </div>
+
+
+                                            <div class="position-relative form-group">
+                                                <label for="exampleEmail" class="">Email</label>
+                                                @Html.TextBox("Stel", null, new { id = "txt", Class = "form-control", Placeholder = "Email", Arialabel = "Email", Ariadescribedby = "Email-addon", required = "true" })
+                                            </div>
+
+
+                                            <div class="position-relative form-group">
+                                                <label for="exampleText" class="">Message</label>
+                                                @Html.TextArea("Msg_txt", null, new { id = "txt", Class = "form-control", Placeholder = "Message", Arialabel = "Message", Ariadescribedby = "Message-addon", required = "true" })
+                                            </div>
+                                            <div class="position-relative form-group">
+                                                <button class="mt-1 btn btn-primary">Send</button>
+                                            </div>
+
+                                            @Html.ActionLink("Back to list", "Home", new {Class= "mt-1 btn btn-primary" })
+                                        </form>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+﻿body {
+    padding-top: 4em;
+    text-align: left;
+    direction: ltr;
+}
+
+.Header {
+    height: 55px;
+    border: solid;
+    border-block: solid;
+    border-radius: 50px;
+    background-color: #2f2a2a;
+}
+
+#Nav {
+    margin-top: 30%;
+    padding-top: 25%;
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    text-align: right;
+    direction: rtl;
+    margin-left: 20px;
+}
+
+    #Nav ul li {
+        margin-top: 30%;
+        padding-top: 25%;
+        font-size: 20px;
+        font-family: Tahoma;
+        color: black;
+        float: right;
+        display: block;
+        text-decoration: none;
+        margin-left: 20px;
+        text-align: initial;
+        height: 35px;
+    }
+
+
+.title {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    /*font-weight: bolder;*/
+    padding-right: 4px;
+    padding-left: 10px;
+    text-align: left;
+    direction: ltr;
+    color: blue;
+}
+
+.text {
+    padding-right: 15px;
+}
+
+.btn {
+    margin-top:5px;
+    margin-left:10px;
+    width: 100px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color:white;
+    border-radius:5px;
+    border-style:solid;
+    background-color:blue;
+}
+
+    .btn:hover {
+        color: #b015f3;
+    }
+
+aside ul li {
+    list-style: none;
+    text-align:left;
+    display: block;
+    font-family: Tahoma;
+    font-size: 18px;
+    color: blue;
+}
+
+aside ul li a {
+   text-decoration:none;
+}
+
+.Cat:hover {
+    margin-left: 4px;
+    margin-right: 4px;
+    border: solid;
+    background-color: aquamarine;
+}
+
+.adv {
+    float: left;
+    width: auto;
+    height: auto;
+    text-align: left;
+    margin-top: 10px;
+   /* border-style: solid;
+    border: solid;
+    border-block: solid;
+    border-radius: 10px;
+    border-color: darkgrey;*/
+}
+
+.itm {
+    margin: 2.7px;
+    float: left;
+    margin-bottom: 4px;
+    width: 261px;
+    height: 261px;
+    margin-top: 4px;
+    border-style: solid;
+    text-align:center;
+}
+    .itm:hover {
+        float: left;
+        color:aqua;
+    }
+
+
+.Items {
+    margin-left: 10px;
+    margin-right: 10px;
+    float: left;
+    width: 60em;
+    height: auto;
+    margin-top: 10px;
+    /*padding-top: 5em;*/
+   /* border-style: solid;
+    border: solid;
+    border-block: solid;
+    border-radius: 10px;
+    border-color: darkgrey;*/
+}
+
+.Adds {
+    float: left;
+    margin-top: 10px;
+    width: 140px;
+    height: 300px;
+   /* border-style: solid;
+    border: solid;
+    border-block: solid;
+    border-radius: 10px;
+    border-color: darkgrey;*/
+}
+

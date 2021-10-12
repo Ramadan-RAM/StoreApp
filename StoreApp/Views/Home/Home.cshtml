@@ -1,0 +1,221 @@
+﻿@model System.Collections.Generic.List<StoreApp.Models.Item>
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <div class="app-main__outer">
+        <div class="app-main__inner">
+            <div class="app-page-title">
+                <div class="page-title-wrapper">
+                    <div class="page-title-heading">
+                        <div class="page-title-icon-rounded">
+                            <i class="fa-accessible-icon fa fa-table">
+                            </i>
+                        </div>
+                        <div>
+                            &nbsp;
+                            Main Store items
+                            <div class="page-title-subheading">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-title-actions">
+                        <div class="d-inline-block dropdown">
+                            @using (Html.BeginForm())
+                            {
+                                StoreApp.Models.Store_DBEntities dbSelect = new StoreApp.Models.Store_DBEntities();
+                                List<SelectListItem>
+                                    li = new List<SelectListItem>();
+                                foreach (var item in dbSelect.Categories)
+                                {
+                                    li.Add(new SelectListItem { Text = item.Cat_Name, Value = item.ID.ToString() });
+                                }
+
+
+                                <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
+                                    <span class="btn-icon-wrapper pr-2 opacity-7">
+                                        <i class="fa fa-business-time fa-w-20">
+
+                                        </i>
+                                    </span>
+                                    Select type of item to search
+                                </button>
+
+                                <div class="page-title-actions">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+
+                                            @Html.DropDownList("Categories", li, new { id = "l1", Class = "dropdown-menu dropdown-menu-right", Ariahidden = "true", Role = "menu", Tabindex = "-1" })
+
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="page-title-actions">
+                                    <div class="search-wrapper">
+
+                                        <div class="input-holder">
+                                            <span>
+                                                <i>
+                                                    @Html.TextBox("Search", null, new { Class = "search-input", Placeholder = "Type to search" })
+                                                </i>
+                                            </span>
+                                            <button type="button" class="search-icon">
+                                                <span>
+
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <button type="button" class="close"></button>
+                                    </div>
+
+                                </div>
+
+                            }
+                        </div>
+
+                    </div>
+
+
+                    @*Category*@
+                    <div class="page-title-actions">
+                        <div class="d-inline-block dropdown">
+                            <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
+                                <span class="btn-icon-wrapper pr-2 opacity-7">
+                                    <i class="fa fa-business-time fa-w-20">
+
+                                    </i>
+                                </span>
+                                Items
+                            </button>
+                            <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                <aside>
+                                    <ul>
+                                        @{
+                                            StoreApp.Models.Store_DBEntities db = new StoreApp.Models.Store_DBEntities();
+
+                                            foreach (var item in db.Categories)
+                                            {
+                                                <li>@Html.ActionLink(item.Cat_Name, "Home", "Home", new { id = item.ID }, null)</li>
+                                            }
+                                        }
+                                    </ul>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <marquee behavior="scroll" direction="down" scrollamount="4"
+                     onmouseover="this.stop();" onmouseout="this.start();">
+                <div class="row">
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card mb-3 widget-content bg-midnight-bloom">
+                            <div class="widget-content-wrapper text-white">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Items</div>
+                                    <div class="widget-subheading">Total Items</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers text-white"><span>@ViewBag.itm_count</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card mb-3 widget-content bg-arielle-smile">
+                            <div class="widget-content-wrapper text-white">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Categories</div>
+                                    <div class="widget-subheading">Total Categories</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers text-white"><span>@ViewBag.cat_count</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card mb-3 widget-content bg-grow-early">
+                            <div class="widget-content-wrapper text-white">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Views</div>
+                                    <div class="widget-subheading">People Interested</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers text-white"><span>@ViewBag.vists</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </marquee>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-header">
+                            Items Table
+                        </div>
+
+                        <div class="table-responsive">
+                            @{ for (int i = 0; i < @Model.Count; i++)
+                                {
+                                    <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+
+                                        <thead>
+
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="widget-content p-0">
+                                                        <div class="widget-content-wrapper">
+                                                            <div class="widget-content-left mr-3">
+                                                                <div class="widget-content-left">
+                                                                    <img class="table" src="~/Images/Items/@Model[i].Item_img" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="badge badge-warning">@Model[i].Item_name</div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="badge badge-warning">@Model[i].Item_price EG</div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <a href="@(Url.Action("Item_details","Home",new {id = Model[i].ID }))" id="PopoverCustomT-1" class="btn btn-primary btn-sm">
+                                                        Details
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                }
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+
+
