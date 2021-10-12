@@ -1,2 +1,0 @@
-# StoreApp
-AdminStore
